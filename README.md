@@ -1,38 +1,26 @@
 # fullstack-candidate-testing
 
-## Instructions
+## Submission
 
+**Demo**: 
+https://fullstack-candidate-testing.subhash.vercel.app
 
-1. Clone this repo. Then clone the main branch and use the following naming convention for the new branch: **firstname-lastname-YYYY-MM-DD**. If your name is John Doe, and today's date is 2020-11-17, then the new branch should be called **john-doe-2020-11-17**.
-2. The repo has 2 folders. **/data** and **/screenshots**.
-3. In the **/data** folder you will find 2 .json files. This is the data you will use to build the React app. You have to build a simple REST API to consume the data in the React app.
-4. In the **/screenshots** folder you will find what you are required to build for this test. 
-5. We strongly recommend you use Next.js and TailwindCSS for this test, since these are the frameworks we are using to build our own apps, but if you're not familiar with them, then create-react-app or Bootstrap 4 or 5 are fine. 
-6. The search input on top of the page should work. The search index should be built using the **/data/jobs.json** file.
-7. Sort by options on top of the page should sort in 3 states per each filter: ascending, descending or remove the sorting operation.
-8. Sort by options should work simultaneously with other sort by options and with the search input if the user is searching for something. This means that the user could sort for example by Location:asc, Department:asc while searching for a Nurse in California.
-9. Ensure your code can work with unstable internet connection (see in pages/api/jobs.js)
-10. Implement unit tests for API at the server-side
+**Run**:
+`npm install`
+`next run dev`
 
-## After you're done:
-1. Push you branch
-2. Deploy your branch to a public url. We recommend you use Vercel, Netlify or AWS S3, but you're free to use any other service as long as the url is publicly accessible. 
-3. Include a README with the installation instructions and with the publicly accessible url. 
-4. Don't forget to let us know you're done to review your test.
+**Test**: 
+`npm install`
+`npx mocha`
 
+**Open Questions**:
+1. Instruction no:3 in the README states that the data in both json files need to be used. But filters.json seems to be summary statistics about the jobs being presented and since this is dynamic, I don't see how the static file (or the corresponding endpong) can be used. I have instead implemented a dynamic report of the job statistics based on the current set of jobs (subject to search). Is this what is expected? Can I ignore filters.json altogether?
 
-## The fine print:
-- Please keep it simple. We don't like complicated setups.
-- Try to replicate the original designs as much as possible.
-- Functional components only. 
-- For interactions in the React app you're free to use reducers, individual component state or any other library, but again, please keep it simple.
-- Typescript use is OK but not required.
-- SCSS use is not required. It is OK to include compiled CSS files or CDN urls.
-- This test shouldn't take you more than 4-6 hours to complete.
-- After the invitation is sent, your acccess rights to this repo will last 48 hours.  
+2. The instructions do not talk about what the sort columns map to. For eg.
+Location: probably maps to job.city - OK
+Role: job.job_title, job.job_type or job.type?
+Department: This is multi-valued for each job. When you sort by Dept ASC, where do you place a job that has both Anaesthesiology and Pathology
+Education: Multiple fields can map - required_skills, required_credentials. Both are array values, so same question as above
+Experience: maps to job.experience. OK
 
-## Important
-
-The screenshot files are for reference only. The React app you are required to build has to look like these screenshots, but we don't expect your views to be an exact clone of every single one of them. All the components in the screenshot were built in plain .jsx with Tailwind CSS, with almost no custom CSS and no additional design assets (images, svg, logos).
-
-Good luck!
+3. It is not clear what attributes should be searchable. The search box says any keyword. Does this mean a full text search on all the job attributes? I hope not :-)
