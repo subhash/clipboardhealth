@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import filters from '../../data/filters';
+import jobs from '../../data/jobs';
 
 export default async (req, res) => {
   res.statusCode = 200;
@@ -11,5 +12,5 @@ export default async (req, res) => {
   // correct results even if server-side can't finish replies in the right order
   await new Promise((resolve)=>setTimeout(resolve, 1000 * Math.random()));
   
-  res.json({})
+  res.json({ jobs })
 }
