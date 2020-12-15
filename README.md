@@ -5,6 +5,8 @@
 **Demo**: 
 https://fullstack-candidate-testing.subhash.vercel.app
 
+![demo](./clip-demo.gif)
+
 **Run**:
 `npm install`
 `next run dev`
